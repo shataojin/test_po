@@ -7,6 +7,10 @@ TagManager:
   - Enemy
   - Target
   - Movable
+  - Environment
+  - boundary
+  - Team_2
+  - Team_1
   layers:
   - Default
   - TransparentFX
