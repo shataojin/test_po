@@ -7,6 +7,8 @@ public class NavigationScript : MonoBehaviour
 {
     public List<Transform> targets; // List of possible targets
     private NavMeshAgent agent;
+    private Transform currentTarget;
+    private bool targetsChanged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -14,42 +16,54 @@ public class NavigationScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         // Find the closest target initially
-        Transform closestTarget = FindClosestTarget();
+        currentTarget = FindClosestTarget();
 
-        if (closestTarget != null)
+        if (currentTarget != null)
         {
-            agent.destination = closestTarget.position;
+            agent.destination = currentTarget.position;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Find the closest target in each frame and navigate towards it
-        Transform closestTarget = FindClosestTarget();
-
-        if (closestTarget != null)
+        // You can skip the FindClosestTarget call if targets haven't changed
+        if (targetsChanged)
         {
-            agent.destination = closestTarget.position;
+            currentTarget = FindClosestTarget();
+            targetsChanged = false;
+        }
+
+        if (currentTarget != null)
+        {
+            agent.destination = currentTarget.position;
         }
     }
 
     // Function to find the closest target among the list
-    Transform FindClosestTarget()
+    private Transform FindClosestTarget()
     {
-        Transform closest = null;
-        float closestDistance = Mathf.Infinity;
+        GameObject[] targetObjects = GameObject.FindGameObjectsWithTag("Team_1");
 
-        foreach (Transform potentialTarget in targets)
+        if (targetObjects.Length == 0)
         {
-            float distance = Vector3.Distance(transform.position, potentialTarget.position);
+            return null;
+        }
+
+        float closestDistance = float.MaxValue;
+        Transform closestTarget = null;
+
+        foreach (GameObject targetObject in targetObjects)
+        {
+            float distance = Vector3.Distance(transform.position, targetObject.transform.position);
+
             if (distance < closestDistance)
             {
-                closest = potentialTarget;
                 closestDistance = distance;
+                closestTarget = targetObject.transform;
             }
         }
 
-        return closest;
+        return closestTarget;
     }
 }

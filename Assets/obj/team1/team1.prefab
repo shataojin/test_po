@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 1267314040487046812}
   - component: {fileID: 487416046187479031}
   - component: {fileID: -5822333592232759726}
+  - component: {fileID: 7464791342544530488}
   m_Layer: 0
   m_Name: team1
   m_TagString: Team_1
@@ -222,8 +223,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -334000983
   m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 10
+  m_Speed: 3.5
+  m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -234,6 +235,19 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7464791342544530488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769426189053134463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335d536c74beb6a4985fbd6195451d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
 --- !u!1 &8853047980540210000
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +362,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8853047980540210000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f203aa6fd5d8c1429bfcc0c1199073a, type: 3}
   m_Name: 

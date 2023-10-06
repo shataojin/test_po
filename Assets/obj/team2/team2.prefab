@@ -219,7 +219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5939619549281664651}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde169ef29bcbc94686beded58458ef8, type: 3}
   m_Name: 
@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 5731936568064376092}
   - component: {fileID: 2221341645739675354}
   - component: {fileID: 2311797282514728581}
+  - component: {fileID: 5657241021564415241}
   m_Layer: 0
   m_Name: team2
   m_TagString: Team_2
@@ -358,3 +359,16 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5657241021564415241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247307609776995267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74121a884e1af44fb6b07f7183c1617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
