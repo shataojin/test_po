@@ -20,6 +20,7 @@ public class DetectCollisions_team_1 : MonoBehaviour
                 // Inflict a damage amount on the Health component of the colliding object
                 health.TakeDamage(damageAmount);
                 Debug.Log("did dmg to team_1");
+                Destroy(gameObject);
             }
 
         }
