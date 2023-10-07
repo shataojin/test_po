@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2210451421365356690}
   - component: {fileID: 5001814088564651503}
   - component: {fileID: -4138245763551273612}
+  - component: {fileID: -8086697002180711224}
   m_Layer: 0
   m_Name: bullet_team_1
   m_TagString: Untagged
@@ -144,5 +145,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 370817304dd1b794ab5df1d552e32c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8086697002180711224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339317343274265171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb2394e61ec8b846bf09532158b7e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

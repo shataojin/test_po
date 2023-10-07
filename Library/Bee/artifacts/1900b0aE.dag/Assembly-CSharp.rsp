@@ -360,6 +360,7 @@
 "Assets/scrprit/AI_turret.cs"
 "Assets/scrprit/DetectCollisionsX.cs"
 "Assets/scrprit/For_test_AI_move.cs"
+"Assets/scrprit/Health.cs"
 "Assets/scrprit/Mouse_move_tank.cs"
 "Assets/scrprit/NavigationScript.cs"
 "Assets/scrprit/team_1/AI_team_1_turret.cs"

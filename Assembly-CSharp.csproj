@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\scrprit\AI_Spawn.cs" />
     <Compile Include="Assets\scrprit\DetectCollisionsX.cs" />
+    <Compile Include="Assets\scrprit\Health.cs" />
     <Compile Include="Assets\scrprit\Mouse_move_tank.cs" />
     <Compile Include="Assets\scrprit\NavigationScript.cs" />
     <Compile Include="Assets\scrprit\team_2\AI_team_2_turret.cs" />

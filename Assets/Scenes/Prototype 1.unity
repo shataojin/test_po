@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f05527bbee752f14692ba75039821b79, type: 2}
   m_LightingSettings: {fileID: 481223275}
 --- !u!196 &4
 NavMeshSettings:
@@ -3985,8 +3985,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab:
   - {fileID: 7247307609776995267, guid: 8b74867decb9ff741960d8ea6faad677, type: 3}
-  time_range_start: 1
-  time_range_end: 3
+  time_range_start: 0
+  time_range_end: 100
   spawnLimitXLeft: 120
   spawnLimitXRight: -120
   spawnLimitZLeft: 230
@@ -5075,8 +5075,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab:
   - {fileID: 6769426189053134463, guid: b6da9fdac02e3b64ea8b963edef3d350, type: 3}
-  time_range_start: 1
-  time_range_end: 2
+  time_range_start: 0
+  time_range_end: 100
   spawnLimitXLeft: 120
   spawnLimitXRight: -120
   spawnLimitZLeft: 20
