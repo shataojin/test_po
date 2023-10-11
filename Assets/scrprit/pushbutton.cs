@@ -60,13 +60,13 @@ public class PushButton : MonoBehaviour
 
         if(spawnedObject.transform.position.z> SimpleboundaryMax)
             {
-                mousePosition.z = -mousePosition.z;
+              
                 Debug.Log("SimpleboundaryMax " );
             }
 
            else if (spawnedObject.transform.position.z < SimpleboundaryMin)
             {
-                mousePosition.z = -mousePosition.z;
+                
                 Debug.Log("SimpleboundaryMin" );
             }
 
