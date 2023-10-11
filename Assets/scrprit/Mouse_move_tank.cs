@@ -23,7 +23,7 @@ public class Mouse_move_tank : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 // Check if the hit object is movable (e.g., has a specific tag)
-                if (hit.collider.CompareTag("Movable"))
+                if (hit.collider.CompareTag("Team_1"))
                 {
                     selectedObject = hit.collider.gameObject;
                 }
