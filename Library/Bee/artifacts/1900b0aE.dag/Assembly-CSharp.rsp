@@ -361,6 +361,8 @@
 -analyzer:"D:/unity/2022.3.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/scrprit/AI_Spawn.cs"
 "Assets/scrprit/AI_turret.cs"
+"Assets/scrprit/ButtonTankBuild.cs"
+"Assets/scrprit/DetectCollisionsCube.cs"
 "Assets/scrprit/DetectCollisionsX.cs"
 "Assets/scrprit/For_test_AI_move.cs"
 "Assets/scrprit/Health.cs"

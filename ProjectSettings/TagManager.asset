@@ -11,6 +11,9 @@ TagManager:
   - boundary
   - Team_2
   - Team_1
+  - button_1
+  - button_2
+  - button_3
   layers:
   - Default
   - TransparentFX
