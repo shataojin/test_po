@@ -17,11 +17,17 @@ public class PushButton : MonoBehaviour
     public float SimpleboundaryMax = 150.0f;
     public float SimpleboundaryMin = 10.0f;
     private bool buttonPressed = false;
+    public EnegryBar enegryBar;
+    public int energyCost = 0;
 
     // Get a reference to the ButtonManager script on start
+   // public PushButton[] buttons;(not trigger)
     private void Start()
     {
         buttonManager = FindObjectOfType<ButtonTankBuild>();
+        enegryBar = FindObjectOfType<EnegryBar>();
+
+        //TimerController.OnEnergyAvailable += EnableButtons;(not trigger)
     }
 
     void OnMouseDown()
@@ -29,29 +35,33 @@ public class PushButton : MonoBehaviour
         // Check if any cube is already spawned
         if (!buttonManager.IsCubeSpawned())
         {
-            // Set the flag to indicate that the button was pressed
-            buttonPressed = true;
-            // Debug.Log("Button pushed: " + cubeName);
-
-            // Destroy the previously spawned object, if it exists
-            if (spawnedObject != null)
+            //Check the enegry level
+            if (enegryBar.EnegryValue >= energyCost)
             {
-                Destroy(spawnedObject);
+                // Set the flag to indicate that the button was pressed
+                buttonPressed = true;
+                // Debug.Log("Button pushed: " + cubeName);
+
+                // Destroy the previously spawned object, if it exists
+                if (spawnedObject != null)
+                {
+                    Destroy(spawnedObject);
+                }
+
+                Vector3 mousePosition = Input.mousePosition;
+                mousePosition.z = 10; // Adjust the depth to be in front of other objects
+
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+                // Set the Y position to the targetY
+                worldPosition.y = targetY;
+                worldPosition.x = 0;
+                worldPosition.z = 0;
+                // Instantiate the object at the adjusted position
+                spawnedObject = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
+                // Set the name for the spawned object
+                spawnedObject.name = cubeName;
             }
-
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 10; // Adjust the depth to be in front of other objects
-
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-            // Set the Y position to the targetY
-            worldPosition.y = targetY;
-            worldPosition.x = 0;
-            worldPosition.z = 0;
-            // Instantiate the object at the adjusted position
-            spawnedObject = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
-            // Set the name for the spawned object
-            spawnedObject.name = cubeName;
         }
     }
 
@@ -59,6 +69,7 @@ public class PushButton : MonoBehaviour
     {
         if (buttonPressed)
         {
+
            
                 Vector3 mousePosition = Input.mousePosition;
                 mousePosition.z = 10; // Adjust the depth to be in front of other objects
@@ -74,6 +85,7 @@ public class PushButton : MonoBehaviour
                 // Move the spawned object smoothly toward the adjusted position
                 spawnedObject.transform.position = Vector3.Lerp(spawnedObject.transform.position, worldPosition, moveSpeed * Time.deltaTime);
 
+
             // Debug.Log("Mouse Position (World): " + worldPosition);
 
             //switch to choosen tanks and destroy cube
@@ -87,6 +99,11 @@ public class PushButton : MonoBehaviour
 
                 // Destroy the cube
                 Destroy(spawnedObject);
+
+                //remove enegry
+                enegryBar.EnegryValue -= energyCost;
+
+              
             }
             }
 
@@ -98,9 +115,15 @@ public class PushButton : MonoBehaviour
 
             // Destroy the cube
             Destroy(spawnedObject);
+
+            //add back enegry
+            enegryBar.EnegryValue += energyCost;
+
+            
         }
-        
-       
+
+      enegryBar.UpdateEnergyTextLabel();
+
     }
     void SpawnAIAtMousePosition()
     {
@@ -113,6 +136,8 @@ public class PushButton : MonoBehaviour
 
         // Instantiate the AI object at the mouse position
         Instantiate(aiPrefab, worldPosition, Quaternion.identity);
+       
+
     }
 
     bool IsMouseOverButton()
@@ -128,4 +153,18 @@ public class PushButton : MonoBehaviour
 
         return false;
     }
+
+    //not trigger
+    //void EnableButtons(int EnergyValue)
+    //{
+    //    if (EnergyValue >= energyCost)
+    //    {
+    //        Debug.Log("button  enable : " + buttons);
+    //        foreach (var button in buttons)
+    //        {
+    //            button.enabled = true;
+    //        }
+    //    }
+    //}
+
 }

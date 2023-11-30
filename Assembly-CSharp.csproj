@@ -61,8 +61,10 @@
     <Compile Include="Assets\scrprit\AI_Spawn.cs" />
     <Compile Include="Assets\scrprit\DetectCollisionsX.cs" />
     <Compile Include="Assets\scrprit\Health.cs" />
+    <Compile Include="Assets\scrprit\SingleSound1.cs" />
     <Compile Include="Assets\scrprit\Mouse_move_tank.cs" />
     <Compile Include="Assets\scrprit\ButtonTankBuild.cs" />
+    <Compile Include="Assets\scrprit\EnegryBar.cs" />
     <Compile Include="Assets\scrprit\NavigationScript.cs" />
     <Compile Include="Assets\scrprit\team_2\AI_team_2_turret.cs" />
     <Compile Include="Assets\scrprit\AI_turret.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Assets\scrprit\team_2\NavigationScript_team_2.cs" />
     <Compile Include="Assets\scrprit\For_test_AI_move.cs" />
     <Compile Include="Assets\scrprit\team_1\AI_team_1_turret.cs" />
+    <Compile Include="Assets\scrprit\ButtonManager.cs" />
     <Compile Include="Assets\scrprit\team_1\DetectCollisions_team_1.cs" />
   </ItemGroup>
   <ItemGroup>

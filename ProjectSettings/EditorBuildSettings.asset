@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 7d7f97ffe3130b945879e64cfa6def1d
+  - enabled: 1
+    path: Assets/Scenes/P VS AI.unity
+    guid: c67b0592914f29e469fb850d7923915c
+  - enabled: 1
+    path: Assets/Scenes/WORKING PARTSNow.unity
+    guid: 531b03bf477198f41a5d47177bd40a0f
   m_configObjects: {}

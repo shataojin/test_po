@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AI_Spawn : MonoBehaviour
 {
+    //public ParticleSystem explosionParticle;
+  
     public GameObject[] targetPrefab;
+    public Health health;
     public float time_range_start = 1.0f;
     public float time_range_end = 5.0f;
     public float spawnLimitXLeft = 0;
@@ -18,6 +22,8 @@ public class AI_Spawn : MonoBehaviour
     private float startDelay = 1.0f;
     private float spawnInterval = 4.0f;
 
+    private bool isAlive = true; // Track whether the tank is alive
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +31,18 @@ public class AI_Spawn : MonoBehaviour
         {
             InvokeRepeating("SpawnRandomEnemy", startDelay, spawnInterval);
         }
+
+        //health = GetComponent<Health>();
+        //// Subscribe to the tank's death event
+        //if (health != null)
+        //{
+        //    isAlive = true;
+        //}
+        //else
+        //{
+        //    isAlive = false;
+        //    OnTankDeath();
+        //}
     }
 
     void SpawnRandomEnemy()
@@ -40,7 +58,46 @@ public class AI_Spawn : MonoBehaviour
 
             // Instantiate a random prefab at the random spawn location
             int randomIndex = Random.Range(0, targetPrefab.Length);
-            Instantiate(targetPrefab[randomIndex], spawnPos, Quaternion.identity);
+            GameObject spawnedObject = Instantiate(targetPrefab[randomIndex], spawnPos, Quaternion.identity);
+            Debug.Log("Spawned a " + spawnedObject.name);
+
+            //// EnergyCost
+            //if (randomIndex == 0)
+            //{
+            //    Debug.Log("Spawned the second prefab: " + spawnedObject.name);
+            //}
+            //if (randomIndex == 1)
+            //{
+            //    Debug.Log("Spawned the second prefab: " + spawnedObject.name);
+            //}
+            //if (randomIndex == 2)
+            //{
+            //    Debug.Log("Spawned the second prefab: " + spawnedObject.name);
+            //}
         }
+
+
     }
+
+    //void EnergyCost()
+    //{
+    //    if (randomIndex == 1)
+    //    {
+    //        Debug.Log("Spawned the second prefab: " + spawnedObject.name);
+    //    }
+    //}
+
+    //private void OnTankDeath()
+    //{
+    //    isAlive = false; // Set the tank as not alive
+
+    //    // Play the explosion and fireworks particles at the tank's position
+    //    if (explosionParticle != null)
+    //    {
+    //        explosionParticle.transform.position = transform.position;
+    //        explosionParticle.Play();
+    //    }
+
+      
+    //}
 }
