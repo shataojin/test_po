@@ -20,9 +20,10 @@ public class AI_Spawn : MonoBehaviour
     public bool enableRandomSpawn = true; // Add a boolean variable for enabling/disabling random spawning
 
     private float startDelay = 1.0f;
-    private float spawnInterval = 4.0f;
+    private float spawnInterval = 10.0f;
 
     private bool isAlive = true; // Track whether the tank is alive
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,10 @@ public class AI_Spawn : MonoBehaviour
             int randomIndex = Random.Range(0, targetPrefab.Length);
             GameObject spawnedObject = Instantiate(targetPrefab[randomIndex], spawnPos, Quaternion.identity);
             Debug.Log("Spawned a " + spawnedObject.name);
+
+          
+
+
 
             //// EnergyCost
             //if (randomIndex == 0)

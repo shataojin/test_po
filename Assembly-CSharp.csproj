@@ -76,6 +76,7 @@
     <Compile Include="Assets\scrprit\For_test_AI_move.cs" />
     <Compile Include="Assets\scrprit\team_1\AI_team_1_turret.cs" />
     <Compile Include="Assets\scrprit\ButtonManager.cs" />
+    <Compile Include="Assets\scrprit\PauseScript.cs" />
     <Compile Include="Assets\scrprit\team_1\DetectCollisions_team_1.cs" />
   </ItemGroup>
   <ItemGroup>

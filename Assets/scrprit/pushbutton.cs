@@ -20,12 +20,17 @@ public class PushButton : MonoBehaviour
     public EnegryBar enegryBar;
     public int energyCost = 0;
 
+    // Dictionary to store the energy cost for each button
+    private Dictionary<string, int> buttonEnergyCosts = new Dictionary<string, int>();
+
+
     // Get a reference to the ButtonManager script on start
-   // public PushButton[] buttons;(not trigger)
+    // public PushButton[] buttons;(not trigger)
     private void Start()
     {
         buttonManager = FindObjectOfType<ButtonTankBuild>();
         enegryBar = FindObjectOfType<EnegryBar>();
+        buttonEnergyCosts[cubeName] = energyCost;
 
         //TimerController.OnEnergyAvailable += EnableButtons;(not trigger)
     }
@@ -61,6 +66,12 @@ public class PushButton : MonoBehaviour
                 spawnedObject = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
                 // Set the name for the spawned object
                 spawnedObject.name = cubeName;
+
+                // Update energy cost only for the button that is currently being pressed
+                buttonEnergyCosts[cubeName] = energyCost;
+
+                // Log which button was pressed
+                Debug.Log("Button pressed: " + cubeName);
             }
         }
     }
@@ -70,20 +81,20 @@ public class PushButton : MonoBehaviour
         if (buttonPressed)
         {
 
-           
-                Vector3 mousePosition = Input.mousePosition;
-                mousePosition.z = 10; // Adjust the depth to be in front of other objects
 
-                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = 10; // Adjust the depth to be in front of other objects
+
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
 
-                // Update the Y position to the targetY while keeping X and Z positions
-                worldPosition.y = targetY;
-                worldPosition.x = worldPosition.x * 20 + adajustX;
-                worldPosition.z = worldPosition.z * 20 + adajustZ;
+            // Update the Y position to the targetY while keeping X and Z positions
+            worldPosition.y = targetY;
+            worldPosition.x = worldPosition.x * 20 + adajustX;
+            worldPosition.z = worldPosition.z * 20 + adajustZ;
 
-                // Move the spawned object smoothly toward the adjusted position
-                spawnedObject.transform.position = Vector3.Lerp(spawnedObject.transform.position, worldPosition, moveSpeed * Time.deltaTime);
+            // Move the spawned object smoothly toward the adjusted position
+            spawnedObject.transform.position = Vector3.Lerp(spawnedObject.transform.position, worldPosition, moveSpeed * Time.deltaTime);
 
 
             // Debug.Log("Mouse Position (World): " + worldPosition);
@@ -102,27 +113,32 @@ public class PushButton : MonoBehaviour
 
                 //remove enegry
                 enegryBar.EnegryValue -= energyCost;
+                Debug.Log("energyCost" + energyCost);
+                enegryBar.UpdateEnergyTextLabel();
+            }
 
-              
-            }
-            }
 
             //for testing click works with cube on also for cancel the spawn
             if (Input.GetMouseButtonDown(1) && !IsMouseOverButton())
             {
-            // Reset the flag to allow building another cube
-            buttonPressed = false;
+                // Reset the flag to allow building another cube
+                buttonPressed = false;
 
-            // Destroy the cube
-            Destroy(spawnedObject);
+                // Destroy the cube
+                Destroy(spawnedObject);
 
-            //add back enegry
-            enegryBar.EnegryValue += energyCost;
+                // Subtract the energy cost of the specific button
+                enegryBar.EnegryValue += buttonEnergyCosts[cubeName];
+                Debug.Log("Canceled button: " + cubeName + ", Energy returned: " + buttonEnergyCosts[cubeName]);
 
-            
+                // Update the energy label
+                enegryBar.UpdateEnergyTextLabel();
+
+
+            }
         }
 
-      enegryBar.UpdateEnergyTextLabel();
+       
 
     }
     void SpawnAIAtMousePosition()

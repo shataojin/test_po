@@ -370,6 +370,7 @@
 "Assets/scrprit/Health.cs"
 "Assets/scrprit/Mouse_move_tank.cs"
 "Assets/scrprit/NavigationScript.cs"
+"Assets/scrprit/PauseScript.cs"
 "Assets/scrprit/pushbutton.cs"
 "Assets/scrprit/SingleSound1.cs"
 "Assets/scrprit/team_1/AI_team_1_turret.cs"
