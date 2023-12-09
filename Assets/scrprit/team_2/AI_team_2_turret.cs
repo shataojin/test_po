@@ -14,6 +14,16 @@ public class AI_team_2_turret : MonoBehaviour
 
     private Transform currentTarget;
 
+    public AudioClip shootingSound; // Add this variable for the shooting sound
+    private AudioSource audioSource; // AudioSource component to play sounds
+
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0.8f;
+        audioSource.volume = 0.8f;
+    }
     private void Update()
     {
         FindClosestTarget();
@@ -75,6 +85,11 @@ public class AI_team_2_turret : MonoBehaviour
 
             // Apply a force to the bullet to make it move forward
             rb.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
+
+            if (shootingSound != null)
+            {
+                audioSource.PlayOneShot(shootingSound);
+            }
         }
     }
 }

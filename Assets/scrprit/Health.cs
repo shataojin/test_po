@@ -4,18 +4,27 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public string objectName = "UnnamedObject";
-    public int maxHealth = 100;
-    public int currentHealth;
-    public float damageTimer = 0f;  // Timer to track time since the last damage
-    public float timeToHeal = 10f; // Time required to trigger healing
+    [SerializeField] private string objectName = "UnnamedObject";
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private Slider slider;
 
-    public Slider slider;
+    [SerializeField] public GameObject deathEffectPrefab; // Assign your FX effect prefab in the Inspector
+    [SerializeField] private bool effectTriggered = false;
+
+   
+   
 
     void Start()
     {
         currentHealth = maxHealth;
-        slider.value = maxHealth;
+
+        // Check if the slider is not null before accessing it
+        if (slider != null)
+        {
+            slider.value = maxHealth;
+        }
+       
     }
 
     private void Update()
@@ -29,49 +38,35 @@ public class Health : MonoBehaviour
         {
             SceneManager.LoadScene("WinScene");
         }
-        if (Input.GetKeyDown(KeyCode.O)&& (objectName == "Player"))
+        if (Input.GetKeyDown(KeyCode.O) && (objectName == "Player"))
         {
             TakeDamage(50);
         }
-        if (Input.GetKeyDown(KeyCode.P)&& (objectName == "Enemy"))
+        if (Input.GetKeyDown(KeyCode.P) && (objectName == "Enemy"))
         {
             TakeDamage(50);
         }
-
-        // Timer logic
-        if (currentHealth < maxHealth)
-        {
-            damageTimer += Time.deltaTime;
-
-            // Check if it's time to heal
-            if (damageTimer >= timeToHeal)
-            {
-                Heal(2); // Adjust the amount to heal as needed
-                damageTimer = 0f; // Reset the timer after healing
-            }
-        }
+      
     }
 
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
         Debug.Log(objectName + " health: " + currentHealth);
-        slider.value = currentHealth;
 
-        // Reset the timer when taking damage
-        damageTimer = 0f;
+        // Check if the slider is not null before accessing it
+        if (slider != null)
+        {
+            slider.value = currentHealth;
+        }
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !effectTriggered)
         {
             Die();
+           
         }
-    }
 
-    public void Heal(int healAmount)
-    {
-        currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
-        Debug.Log(objectName + " healed. Current health: " + currentHealth);
-        slider.value = currentHealth;
+       
     }
 
     void Die()
@@ -80,13 +75,31 @@ public class Health : MonoBehaviour
 
         if (objectName == "Player")
         {
+
+           // TriggerFX();
             SceneManager.LoadScene("LoseScene");
         }
         else if (objectName == "Enemy")
         {
+           // TriggerFX();
             SceneManager.LoadScene("WinScene");
         }
+        HandleDeathEffect();
+       
+    }
 
+    void HandleDeathEffect()
+    {
+        // Set the flag to indicate that the effect has been triggered
+        effectTriggered = true;
+        Debug.Log(effectTriggered);
+        // Instantiate the death effect at the object's position
+        if (deathEffectPrefab != null)
+        {
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+        }
+        
         Destroy(gameObject);
     }
+
 }

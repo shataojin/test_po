@@ -372,6 +372,8 @@
 "Assets/scrprit/NavigationScript.cs"
 "Assets/scrprit/PauseScript.cs"
 "Assets/scrprit/pushbutton.cs"
+"Assets/scrprit/QuitGameOnEscape.cs"
+"Assets/scrprit/shotsound.cs"
 "Assets/scrprit/SingleSound1.cs"
 "Assets/scrprit/team_1/AI_team_1_turret.cs"
 "Assets/scrprit/team_1/DetectCollisions_team_1.cs"

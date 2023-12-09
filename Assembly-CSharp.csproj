@@ -72,11 +72,13 @@
     <Compile Include="Assets\scrprit\DetectCollisionsCube.cs" />
     <Compile Include="Assets\scrprit\pushbutton.cs" />
     <Compile Include="Assets\scrprit\team_1\NavigationScript_team_1.cs" />
+    <Compile Include="Assets\scrprit\QuitGameOnEscape.cs" />
     <Compile Include="Assets\scrprit\team_2\NavigationScript_team_2.cs" />
     <Compile Include="Assets\scrprit\For_test_AI_move.cs" />
     <Compile Include="Assets\scrprit\team_1\AI_team_1_turret.cs" />
     <Compile Include="Assets\scrprit\ButtonManager.cs" />
     <Compile Include="Assets\scrprit\PauseScript.cs" />
+    <Compile Include="Assets\scrprit\shotsound.cs" />
     <Compile Include="Assets\scrprit\team_1\DetectCollisions_team_1.cs" />
   </ItemGroup>
   <ItemGroup>

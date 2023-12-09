@@ -24,8 +24,7 @@ public class DetectCollisions_team_2 : MonoBehaviour
                 health.TakeDamage(damageAmount);
                 Debug.Log("did dmg to team_2");
                 Destroy(gameObject);
-                explosionParticle.transform.position = transform.position;
-                explosionParticle.Play();
+                
             }
 
         }

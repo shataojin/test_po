@@ -12,15 +12,20 @@ public class ButtonManager : MonoBehaviour
     public GameObject QuitButton;
     public GameObject InstructionWords;
     public GameObject BackButton;
+    public GameObject Playagain;
+    public GameObject returntomenu;
+    public GameObject continues;
+    public GameObject Returntomainmenu;
+    
     public void Play()
     {
         SceneManager.LoadScene("WORKING PARTSNow");
+       
     }
 
     public void Instruction()
     {
-        // Load the "Instruction" scene
-        SceneManager.LoadScene("Instruction");
+       
 
         // Set InstructionOn to true
         InstructionOn = true;
@@ -37,7 +42,7 @@ public class ButtonManager : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene("MainMenu");
+       
 
         // Hide and show things
         MainMenuVisibility(true);
@@ -47,6 +52,25 @@ public class ButtonManager : MonoBehaviour
     public void End()
     {
         SceneManager.LoadScene("EndSence");
+    }
+
+    public void loseplayagain()
+    {
+        SceneManager.LoadScene("WORKING PARTSNow");
+    }
+
+    public void loseReturntomenu()
+    {
+        
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void winContinues()
+    {
+        SceneManager.LoadScene("WORKING PARTSNow");
+    }
+    public void winReturntomainmenus()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     void Update()
@@ -59,7 +83,12 @@ public class ButtonManager : MonoBehaviour
         {
             Debug.Log("InstructionOn is false");
         }
+
+       
+       
     }
+
+   
 
     void MainMenuVisibility(bool isVisible)
     {

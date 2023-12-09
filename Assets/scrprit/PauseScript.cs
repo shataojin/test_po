@@ -4,33 +4,33 @@ using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
-   public bool isPaused = false;
+    public bool isPaused = false;
     public GameObject pauseMenu;
 
     // Reference to the UI buttons
     public GameObject resumeButton;
     public GameObject mainMenuButton;
 
+    public GameObject CDBar;
+    private EnegryBar cooldownBarScript; 
+
     // Start is called before the first frame update
     void Start()
     {
         // Initially, hide the buttons
         ToggleButtonsVisibility(false);
+        cooldownBarScript = CDBar.GetComponent<EnegryBar>();
+        CDBar.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             TogglePause();
         }
 
-        // Check for spacebar to toggle button visibility
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ToggleButtonsVisibility(!isPaused);
-        }
     }
 
     void TogglePause()
@@ -41,7 +41,7 @@ public class PauseScript : MonoBehaviour
         {
             Time.timeScale = 0; // Pause the game
             pauseMenu.SetActive(true); // Show the pause menu or any UI element you want
-            ToggleButtonsVisibility(true); // Show the buttons when paused
+            ToggleButtonsVisibility(true); // Show only the resume button when paused
         }
         else
         {
@@ -53,7 +53,7 @@ public class PauseScript : MonoBehaviour
 
     void ToggleButtonsVisibility(bool isVisible)
     {
-        resumeButton.SetActive(isVisible);
+        resumeButton.SetActive(isPaused && isVisible); // Show the resume button only when paused
         mainMenuButton.SetActive(isVisible);
     }
 

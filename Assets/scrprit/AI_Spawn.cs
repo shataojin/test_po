@@ -9,8 +9,7 @@ public class AI_Spawn : MonoBehaviour
   
     public GameObject[] targetPrefab;
     public Health health;
-    public float time_range_start = 1.0f;
-    public float time_range_end = 5.0f;
+    
     public float spawnLimitXLeft = 0;
     public float spawnLimitXRight = 0;
     public float spawnLimitZLeft = 0;
@@ -19,12 +18,14 @@ public class AI_Spawn : MonoBehaviour
 
     public bool enableRandomSpawn = true; // Add a boolean variable for enabling/disabling random spawning
 
-    private float startDelay = 1.0f;
-    private float spawnInterval = 10.0f;
+   public float startDelay = 1.0f;
+    public float spawnInterval = 10.0f;
 
     private bool isAlive = true; // Track whether the tank is alive
 
+    private CharacterController _characterController;
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -103,6 +104,8 @@ public class AI_Spawn : MonoBehaviour
     //        explosionParticle.Play();
     //    }
 
-      
+
     //}
+
+    
 }
